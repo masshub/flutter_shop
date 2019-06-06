@@ -9,6 +9,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'shop_item.dart';
 import 'post.dart';
 import 'shop_list.dart';
+import 'shopping_cart.dart';
 import 'styles.dart';
 
 /**
@@ -33,11 +34,32 @@ class _ShopPageState extends State<ShopPage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: ListView(
+        body: Stack(
       children: <Widget>[
-        _topBanner(),
-        _hotRecommand(),
-        _buildList(),
+        ListView(
+          children: <Widget>[
+            _topBanner(),
+            _hotRecommand(),
+            _buildList(),
+          ],
+        ),
+        Positioned(
+          child: FloatingActionButton(
+            onPressed: () {
+              Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+                return ShoppingCart();
+              }));
+            },
+            child: Icon(
+              Icons.shopping_cart,
+              color: Colors.white,
+            ),
+            backgroundColor: Colors.black54,
+            mini: true,
+          ),
+          right: 16.0,
+          bottom: 68.0,
+        )
       ],
     ));
   }
@@ -58,9 +80,9 @@ class _ShopPageState extends State<ShopPage> with TickerProviderStateMixin {
 //        NavigatorUtil.pushWeb(context,
 //            title: model.title, url: model.link, isHome: isHome);
 
-        Navigator.of(context).push(MaterialPageRoute(builder: (_){
-          return GoodsDetail();
-        }));
+          Navigator.of(context).push(MaterialPageRoute(builder: (_) {
+            return GoodsDetail();
+          }));
         },
         child: Card(
             elevation: 6.0,
@@ -70,40 +92,39 @@ class _ShopPageState extends State<ShopPage> with TickerProviderStateMixin {
               height: 140.0,
               padding: EdgeInsets.all(16.0),
               margin: EdgeInsets.all(8.0),
-              child: new Row(
+              child: Row(
                 children: <Widget>[
                   Container(
                     width: 120.0,
                     alignment: Alignment.center,
                     child:
 //                  Image.network(model.imageUrl,fit: BoxFit.cover,)
-                        new CachedNetworkImage(
+                        CachedNetworkImage(
                       height: 120.0,
                       width: 120.0,
                       fit: BoxFit.cover,
                       imageUrl: posts[index].imageUrl,
                       placeholder: (context, url) => ProgressView(),
-                      errorWidget: (context, url, error) =>
-                          new Icon(Icons.error),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
                     ),
                   ),
                   SizedBox(
                     width: 16.0,
                   ),
-                  new Expanded(
-                      child: new Column(
+                  Expanded(
+                      child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      new Text(
+                      Text(
                         posts[index].title,
                         maxLines: 1,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyles.listTitle,
                       ),
                       Gaps.vGap10,
-                      new Expanded(
+                      Expanded(
                         flex: 1,
-                        child: new Text(
+                        child: Text(
                           posts[index].description,
                           maxLines: 3,
                           softWrap: true,

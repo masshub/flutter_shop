@@ -20,6 +20,8 @@ dependencies:
   url_launcher: ^5.0.2
   cached_network_image: ^0.7.0
   pull_to_refresh: ^1.4.0
+  binding_helper: ^0.0.2
+  flutter_screenutil: ^0.5.2
 
 
 dev_dependencies:
@@ -39,8 +41,8 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - assets/images/screen.jpg
   #  - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

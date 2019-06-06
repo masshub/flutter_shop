@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'goods_indroduce.dart';
 import 'shop_list.dart';
 import 'shop_page.dart';
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: ShopPage(),
+//    home: GoodsIntroduce(),
     );
   }
 }

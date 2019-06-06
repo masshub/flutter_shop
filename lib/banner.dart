@@ -50,11 +50,11 @@ class _BannerState extends State<TopBanner> {
               children: _buildItems(),
             ),
             _buildIndicator(), // 下面的小点
-            Positioned(
-              child: _numberIndicator(),
-              right: 10.0,
-              top: 10.0,
-            ),
+//            Positioned(
+//              child: _numberIndicator(),
+//              right: 10.0,
+//              top: 10.0,
+//            ),
           ]),
         ),
       ],
