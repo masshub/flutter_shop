@@ -730,6 +730,7 @@ class _GoodsDetailState extends State<GoodsDetail> {
           // ignore: unrelated_type_equality_checks
           border: Border(
               bottom: BorderSide(
+                  // ignore: unrelated_type_equality_checks
                   color: index == _paramsTitle
                       ? Colors.transparent
                       : Color(0xffe4e4e4),
